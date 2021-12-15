@@ -1,0 +1,648 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+        <!--==================== UNICONS ====================-->
+        <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
+        
+        <!--==================== CSS ====================-->
+        <link rel="stylesheet" href="./style.css">
+
+        <title>點餐系統</title>
+        <!--==================== TOP BAR ====================-->
+        <header class="header" id='header'>
+            <div class="topbar">
+                <h1 class="nav__logo">FastOrder</h1>
+
+                <div class="scroll__nav__menu">
+                    <ul class="scroll__nav__list">
+                        <li class="scroll__nav__item">
+                            <a href="#goodday-breakfast" class="scroll__nav__link active-link">咕蒂早午餐</a>
+                        </li>
+
+                        <li class="scroll__nav__item">
+                            <a href="#ichrou-carry" class="scroll__nav__link">一郎咖哩</a>
+                        </li>
+
+                        <li class="scroll__nav__item">
+                            <a href="#nkust-noodle" class="scroll__nav__link">高科麵店</a>
+                        </li>
+                        
+                        <li class="scroll__nav__item">
+                            <a href="#exotic-food" class="scroll__nav__link">異國美食</a>
+                        </li>
+
+                        <li class="scroll__nav__item">
+                            <a href="#kimbap" class="scroll__nav__link">好吃飯捲</a>
+                        </li>
+                    </ul>
+                </div> 
+            </div>
+
+            <div class="buttom__nav" id="buttom-nav">
+                <nav class="nav container">
+                    <a href="#" class="nav__logo">訂單明細</a>
+                    <div class="receipt__menu" id="receipt-menu">
+                        <ul class="receipt__list">
+                        </ul>
+                        <h3 class="receipt__total">Total : $ <div id='total'>0</div></h3>
+        
+                        <div class="receipt__btns">
+                            <div href="#" class="back__button button" id='back-button'>感覺吃不飽</div>
+                            <a href="#" class="check__button button" id='check-button'>結帳</a>
+                        </div>
+                        <!-- <i class="uil uil-times nav__close" id='nav-close'></i> -->
+                    </div>
+                    <div class="nav__btns">
+                        <div class="nav__toggle" id="nav-toggle">                       
+                            <i class="uil uil-apps"></i>
+                        </div>
+                    </div>
+                </nav>
+            </div>
+
+            <!--==== MODAL ===-->
+            <div class="modal__container" id="modal-container">
+              <div class="modal__content">
+                  <i class="uil uil-times modal__close" title='Close' id='modal-close'></i>
+                  <div>
+                    <h1 class="modal__title">餐點名稱</h1>
+                    <h1 class="modal__price">$80</h1>
+                  </div>
+                  
+                  <div class="modal__menu">
+                    <p class="modal__description">選擇三樣配菜</p>
+                    <ul class="modal__list">
+                      <li class="modal__item">
+                        <i class="uil uil-circle modal__item-icon"></i>
+                        <p class='choosed__item'>高麗菜</p> 
+                      </li>
+                      <li class="modal__item">
+                        <i class="uil uil-circle modal__item-icon"></i>
+                        <p>清江菜</p> 
+                      </li>
+                      <li class="modal__item">
+                        <i class="uil uil-circle modal__item-icon"></i>
+                        <p>菠菜</p> 
+                      </li>
+                      <li class="modal__item">
+                        <i class="uil uil-circle modal__item-icon"></i>
+                        <p>地瓜葉</p> 
+                      </li>
+                      <li class="modal__item">
+                        <i class="uil uil-circle modal__item-icon"></i>
+                        <p>百頁豆腐</p> 
+                      </li>
+                    </ul>
+                  </div>
+
+                  <div class="modal__buttons">
+                    <button class="modal__button-width" id='modal-close'>
+                        取消
+                    </button>
+  
+                    <button class="modal__button-link" id='modal-add'>
+                        訂購
+                    </button>
+                  </div>            
+                  
+              </div>
+            </div>
+
+            <!--==== MODAL刪除 ===-->
+            <div class="modal__container-check" id="modal-container-check">
+              <div class="modal__content-check">
+                    <h1 class="modal__title">確認刪除?</h1>
+
+                  <div class="modal__buttons">
+                    <button class="modal__button-width" id='modal-check-back'>
+                        取消
+                    </button>
+  
+                    <button class="modal__button-link" id='modal-check-remove'>
+                        確認
+                    </button>
+                  </div>            
+                  
+              </div>
+            </div>
+        </header>
+
+    </head>
+<body>
+    <!--==================== MAIN ====================-->
+    <main class="main">
+        <!--==================== goodday-breakfast ====================-->
+        <!-- <section class="goodday-breakfast section" id="goodday-breakfast">
+            <div class="item__container">
+                <div class="item__content">
+                  <div class="item__img">
+                    <img src="https://i.ibb.co/gVDpM7c/goodday-breakfast.png" alt="goodday-breakfast">
+                  </div> 
+                  <h3 class="item__title">厚切豬排三明治</h3>
+                  <div class="item__button__container">
+                    <h3>$300</h3>
+                  </div>
+                  <div class="modal__button" id="open-modal">
+                    購買
+                  </div>
+                </div>
+
+                <div class="item__content">
+                    <div class="item__img">
+                      <img src="https://i.ibb.co/5hMx8N1/goodday-breakfast3.png" alt="goodday-breakfast3">
+                    </div> 
+                    <h3 class="item__title">美式餐盤</h3> 
+                    <div class="item__button__container">
+                      <h3>$300</h3>
+                      <button class="modal__button" id="open-modal">
+                        購買
+                      </button>
+                    </div>
+                  </div>
+                
+                <div class="item__content">
+                  <div class="item__img">
+                    <img src="https://i.ibb.co/L8bC8bd/goodday-breakfast2.png" alt="goodday-breakfast2">
+                  </div> 
+                  <h3 class="item__title">美式大鬆餅</h3>
+                  <div class="item__button__container">
+                    <h3>$300</h3>
+                    <button class="modal__button" id="open-modal">
+                        購買
+                    </button>
+                  </div>
+                </div>
+                
+                <div class="item__content">
+                  <div class="item__img">
+                    <img src="https://i.ibb.co/gVDpM7c/goodday-breakfast.png" alt="goodday-breakfast">
+                  </div> 
+                  <h3 class="item__title">花生醬燒肉總匯</h3>
+                  <div class="item__button__container">
+                    <h3>$300</h3>
+                    <button class="modal__button" id="open-modal">
+                        購買
+                    </button>
+                  </div>
+                </div>
+                
+                <div class="item__content">
+                  <div class="item__img">
+                    <img src="https://i.ibb.co/L8bC8bd/goodday-breakfast2.png" alt="goodday-breakfast2">
+                  </div> 
+                  <h3 class="item__title">披薩漢堡</h3>
+                  <div class="item__button__container">
+                    <h3>$300</h3>
+                    <button class="modal__button" id="open-modal">
+                        購買
+                    </button>
+                  </div>
+                </div>
+                
+                <div class="item__content">
+                  <div class="item__img">
+                    <img src="https://i.ibb.co/5hMx8N1/goodday-breakfast3.png" alt="goodday-breakfast3">
+                  </div> 
+                  <h3 class="item__title">風味漢堡</h3>
+                  <div class="item__button__container">
+                    <h3>$300</h3>
+                    <div class="modal__button" id="open-modal">
+                    購買
+                  </div>
+                  </div>
+                </div>
+              </div>
+        </section> -->
+        <!--==================== ichrou-carry ====================-->
+        <!-- <section class="ichrou-carry section" id="ichrou-carry">
+            <div class="item__container">
+                <div class="item__content">
+                  <div class="item__img">
+                    <img src="https://i.ibb.co/Fb9gw6Y/ichrou-carry.png" alt="ichrou-carry">
+                  </div> 
+                  <h3 class="item__title">焗烤奶油義大利麵</h3>
+                  <div class="item__button__container">
+                    <h3>$300</h3>
+                    <button class="modal__button" id="open-modal">
+                        購買
+                    </button>
+                  </div>
+                </div>
+                
+                <div class="item__content">
+                  <div class="item__img">
+                    <img src="https://i.ibb.co/Fb9gw6Y/ichrou-carry.png" alt="ichrou-carry">
+                  </div> 
+                  <h3 class="item__title">焗烤火腿義大利麵</h3>
+                  <div class="item__button__container">
+                    <h3>$300</h3>
+                    <button class="modal__button" id="open-modal">
+                        購買
+                    </button>
+                  </div>
+                </div>
+                
+                <div class="item__content">
+                  <div class="item__img">
+                    <img src="https://i.ibb.co/Fb9gw6Y/ichrou-carry.png" alt="ichrou-carry">
+                  </div> 
+                  <h3 class="item__title">焗烤奶油燉飯</h3>
+                  <div class="item__button__container">
+                    <h3>$300</h3>
+                    <button class="modal__button" id="open-modal">
+                        購買
+                    </button>
+                  </div>
+                </div>
+                
+                <div class="item__content">
+                  <div class="item__img">
+                    <img src="https://i.ibb.co/Fb9gw6Y/ichrou-carry.png" alt="ichrou-carry">
+                  </div> 
+                  <h3 class="item__title">奶油燉飯</h3>
+                  <div class="item__button__container">
+                    <h3>$300</h3>
+                    <button class="modal__button" id="open-modal">
+                        購買
+                    </button>
+                  </div>
+                </div>
+                
+                <div class="item__content">
+                  <div class="item__img">
+                    <img src="https://i.ibb.co/Fb9gw6Y/ichrou-carry.png" alt="ichrou-carry">
+                  </div> 
+                  <h3 class="item__title">焗烤肌肉燉飯</h3>
+                  <div class="item__button__container">
+                    <h3>$300</h3>
+                    <div class="modal__button" id="open-modal">
+                    購買
+                  </div>
+                  </div>
+                </div>
+
+                <div class="item__content">
+                    <div class="item__img">
+                      <img src="https://i.ibb.co/Fb9gw6Y/ichrou-carry.png" alt="ichrou-carry">
+                    </div> 
+                    <h3 class="item__title">松露義大利麵</h3>
+                    <div class="item__button__container">
+                      <h3>$300</h3>
+                      <div class="modal__button" id="open-modal">
+                    購買
+                  </div>
+                    </div>
+                  </div>
+              </div>
+        </section> -->
+
+        <!--=============== nkust-noodle ===============-->
+        <!-- <section class="nkust-noodle section" id="nkust-noodle">
+          <div class="item__container">
+              <div class="item__content">
+                <div class="item__img">
+                  <img src="https://i.ibb.co/8PCxmpZ/nkust-noodle.png" alt="nkust-noodle">
+                </div> 
+                <h3 class="item__title">焗烤奶油義大利麵</h3>
+                <div class="item__button__container">
+                  <h3>$300</h3>
+                  <button class="modal__button" id="open-modal">
+                        購買
+                    </button>
+                </div>
+              </div>
+              
+              <div class="item__content">
+                <div class="item__img">
+                  <img src="https://i.ibb.co/8PCxmpZ/nkust-noodle.png" alt="nkust-noodle">
+                </div> 
+                <h3 class="item__title">焗烤火腿義大利麵</h3>
+                <div class="item__button__container">
+                  <h3>$300</h3>
+                  <button class="modal__button" id="open-modal">
+                        購買
+                    </button>
+                </div>
+              </div>
+              
+              <div class="item__content">
+                <div class="item__img">
+                  <img src="https://i.ibb.co/8PCxmpZ/nkust-noodle.png" alt="nkust-noodle">
+                </div> 
+                <h3 class="item__title">焗烤奶油燉飯</h3>
+                <div class="item__button__container">
+                  <h3>$300</h3>
+                  <button class="modal__button" id="open-modal">
+                        購買
+                    </button>
+                </div>
+              </div>
+              
+              <div class="item__content">
+                <div class="item__img">
+                  <img src="https://i.ibb.co/8PCxmpZ/nkust-noodle.png" alt="nkust-noodle">
+                </div> 
+                <h3 class="item__title">奶油燉飯</h3>
+                <div class="item__button__container">
+                  <h3>$300</h3>
+                  <button class="modal__button" id="open-modal">
+                        購買
+                    </button>
+                </div>
+              </div>
+              
+              <div class="item__content">
+                <div class="item__img">
+                  <img src="https://i.ibb.co/8PCxmpZ/nkust-noodle.png" alt="nkust-noodle">
+                </div> 
+                <h3 class="item__title">焗烤肌肉燉飯</h3>
+                <div class="item__button__container">
+                  <h3>$300</h3>
+                  <div class="modal__button" id="open-modal">
+                    購買
+                  </div>
+                </div>
+              </div>
+
+              <div class="item__content">
+                  <div class="item__img">
+                    <img src="https://i.ibb.co/8PCxmpZ/nkust-noodle.png" alt="nkust-noodle">
+                  </div> 
+                  <h3 class="item__title">松露義大利麵</h3>
+                  <div class="item__button__container">
+                    <h3>$300</h3>
+                    <div class="modal__button" id="open-modal">
+                    購買
+                  </div>
+                  </div>
+                </div>
+            </div>
+      </section> -->
+
+        <!--=============== exotic-food ===============-->
+        <!-- <section class="exotic-food section" id="exotic-food">
+          <div class="item__container">
+            <div class="item__content">
+              <div class="item__img">
+                <img src="https://i.ibb.co/mD7ysX5/exotic-food.png" alt="exotic-food">
+              </div> 
+              <h3 class="item__title">焗烤奶油義大利麵</h3>
+              <div class="item__button__container">
+                <h3>$300</h3>
+                <button class="modal__button" id="open-modal">
+                        購買
+                    </button>
+              </div>
+            </div>
+            
+            <div class="item__content">
+              <div class="item__img">
+                <img src="https://i.ibb.co/mD7ysX5/exotic-food.png" alt="exotic-food">
+              </div> 
+              <h3 class="item__title">焗烤火腿義大利麵</h3>
+              <div class="item__button__container">
+                <h3>$300</h3>
+                <button class="modal__button" id="open-modal">
+                        購買
+                    </button>
+              </div>
+            </div>
+            
+            <div class="item__content">
+              <div class="item__img">
+                <img src="https://i.ibb.co/mD7ysX5/exotic-food.png" alt="exotic-food">
+              </div> 
+              <h3 class="item__title">焗烤奶油燉飯</h3>
+              <div class="item__button__container">
+                <h3>$300</h3>
+                <button class="modal__button" id="open-modal">
+                        購買
+                    </button>
+              </div>
+            </div>
+            
+            <div class="item__content">
+              <div class="item__img">
+                <img src="https://i.ibb.co/mD7ysX5/exotic-food.png" alt="exotic-food">
+              </div> 
+              <h3 class="item__title">奶油燉飯</h3>
+              <div class="item__button__container">
+                <h3>$300</h3>
+                <button class="modal__button" id="open-modal">
+                        購買
+                    </button>
+              </div>
+            </div>
+            
+            <div class="item__content">
+              <div class="item__img">
+                <img src="https://i.ibb.co/mD7ysX5/exotic-food.png" alt="exotic-food">
+              </div> 
+              <h3 class="item__title">焗烤肌肉燉飯</h3>
+              <div class="item__button__container">
+                <h3>$300</h3>
+                <div class="modal__button" id="open-modal">
+                    購買
+                  </div>
+              </div>
+            </div>
+
+            <div class="item__content">
+                <div class="item__img">
+                  <img src="https://i.ibb.co/mD7ysX5/exotic-food.png" alt="exotic-food">
+                </div> 
+                <h3 class="item__title">松露義大利麵</h3>
+                <div class="item__button__container">
+                  <h3>$300</h3>
+                  <div class="modal__button" id="open-modal">
+                    購買
+                  </div>
+                </div>
+            </div>
+          </div>
+
+        </section> -->
+
+        <!--=============== kimbap ===============-->
+        <!-- <section class="kimbap section" id="kimbap">
+          <div class="item__container">
+            <div class="item__content">
+              <div class="item__img">
+                <img src="https://i.ibb.co/Bc9QcFJ/kimbap.png" alt="kimbap">
+              </div> 
+              <h3 class="item__title">焗烤奶油義大利麵</h3>
+              <div class="item__button__container">
+                <h3>$300</h3>
+                <button class="modal__button" id="open-modal">
+                        購買
+                    </button>
+              </div>
+            </div>
+            
+            <div class="item__content">
+              <div class="item__img">
+                <img src="https://i.ibb.co/Bc9QcFJ/kimbap.png" alt="kimbap">
+              </div> 
+              <h3 class="item__title">焗烤火腿義大利麵</h3>
+              <div class="item__button__container">
+                <h3>$300</h3>
+                <button class="modal__button" id="open-modal">
+                        購買
+                    </button>
+              </div>
+            </div>
+            
+            <div class="item__content">
+              <div class="item__img">
+                <img src="https://i.ibb.co/Bc9QcFJ/kimbap.png" alt="kimbap">
+              </div> 
+              <h3 class="item__title">焗烤奶油燉飯</h3>
+              <div class="item__button__container">
+                <h3>$300</h3>
+                <button class="modal__button" id="open-modal">
+                        購買
+                    </button>
+              </div>
+            </div>
+            
+            <div class="item__content">
+              <div class="item__img">
+                <img src="https://i.ibb.co/Bc9QcFJ/kimbap.png" alt="kimbap">
+              </div> 
+              <h3 class="item__title">奶油燉飯</h3>
+              <div class="item__button__container">
+                <h3>$300</h3>
+                <button class="modal__button" id="open-modal">
+                        購買
+                    </button>
+              </div>
+            </div>
+            
+            <div class="item__content">
+              <div class="item__img">
+                <img src="https://i.ibb.co/Bc9QcFJ/kimbap.png" alt="kimbap">
+              </div> 
+              <h3 class="item__title">焗烤肌肉燉飯</h3>
+              <div class="item__button__container">
+                <h3>$300</h3>
+                <div class="modal__button" id="open-modal">
+                    購買
+                  </div>
+              </div>
+            </div>
+
+            <div class="item__content">
+                <div class="item__img">
+                  <img src="https://i.ibb.co/Bc9QcFJ/kimbap.png" alt="kimbap">
+                </div> 
+                <h3 class="item__title">松露義大利麵</h3>
+                <div class="item__button__container">
+                  <h3>$300</h3>
+                  <div class="modal__button" id="open-modal">
+                    購買
+                  </div>
+                </div>
+              </div>
+          </div>
+        </section> -->
+    </main>
+
+    <!--==================== MODAL ====================-->
+      <!--==== MODAL ===-->
+      <!-- <div class="modal__container" id="modal-container">
+        <div class="modal__content">
+            <div class="modal__close" title='Close'>
+                <i class="bx bx-x"></i>
+            </div>
+            
+            <h1 class="modal__title">餐點名稱</h1>
+            <p class="modal__description">選擇三樣配菜</p>
+
+            <div class="modal__menu">
+              <ul class="modal__list">
+                <li class="modal__item">
+                  <i class="uil uil-check-circle modal__item-icon"></i>高麗菜
+                </li>
+                <li class="modal__item">
+                  <i class="uil uil-circle modal__item-icon"></i>銀絲捲
+                </li>
+                <li class="modal__item">
+                  <i class="uil uil-circle modal__item-icon"></i>菠菜
+                </li>
+                <li class="modal__item">
+                  <i class="uil uil-circle modal__item-icon"></i>地瓜葉
+                </li>
+                <li class="modal__item">
+                  <i class="uil uil-circle modal__item-icon"></i>百頁豆腐
+                </li>
+              </ul>
+            </div>
+      
+            <button class="modal__button modal__button-width">
+                View Status
+            </button>
+
+            <button class="modal__button-link">
+                Close
+            </button>
+        </div>
+      </div> -->
+
+    <div class="take__number" id='take-number'>
+        <div class="topbar">
+            <h1 class="topbar__title">FastOrder</h1> 
+        </div>
+        <div class="take__number-container">
+            <h3 class="take__number-tag">取餐號碼</h3>
+            <div class="number">123</div>
+            <h3 class="take__number-description">餐點製作中<br>預估取餐時間為 <br> 12 :05 分</h3>
+        </div>
+    </div>
+
+    <!--==================== FOOTER ====================-->
+    <!-- <footer class="footer">
+        <div class="footer__bg">
+            <div class="footer__container container grid">
+                <div>
+                    <h3 class="footer__title">Alexa</h3>
+                    <span class="footer__subtitle">Froted Engineer</span>
+                </div>
+                <ul class="footer__links">
+                    <li>
+                        <a href="#services" class="footer__link">Services</a>
+                    </li>
+                    <li>
+                        <a href="#portfolio" class="footer__link">Portfolio</a>
+                    </li>
+                    <li>
+                        <a href="#contact" class="footer__link">Contactme</a>
+                    </li>
+                </ul>
+                <ul class="footer__socials">
+                    <a href="" class="footer__social">
+                        <i class='uil uil-facebook-f'></i>
+                    </a>
+                    <a href="" class="footer__social">
+                        <i class="uil uil-instagram"></i>
+                    </a>
+                    <a href="" class="footer__social">
+                        <i class="uil uil-twitter-alt"></i>
+                    </a>
+                </ul>
+                <p class="footer__copy">&#169; Bedicode.All right reserved</p>
+            </div>
+        </div>
+    </footer> -->
+    
+    <!--==================== SCROLL TOP ====================-->
+    <!-- <a href="#" class="scroll__up" id="scroll-up">
+        <i class="uil uil-arrow-up scrollup__icon"></i>
+    </a> -->
+    <!--==================== MAIN JS ====================-->
+    <script src="./main.js"></script>
+</body>
+</html>
